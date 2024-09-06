@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public float xSpeed;
     private float xVector;
     private float xDirection;
+    public float ySpeed;
+    private float yVector;
+    private float yDirection;
 
     private Rigidbody2D rb;
 
@@ -34,6 +37,10 @@ public class PlayerController : MonoBehaviour
         xSpeed = 5f;
         xVector = 0f;
         xDirection = 0;
+
+        ySpeed = 5f;
+        yVector = 0f;
+        yDirection = 0f;
     }
 
     private void Update()
@@ -42,6 +49,11 @@ public class PlayerController : MonoBehaviour
         xVector = xSpeed * xDirection * Time.deltaTime;
 
         transform.Translate(xVector, 0, 0);
+
+        yDirection = Input.GetAxis("Vertical");
+        yVector = ySpeed * yDirection * Time.deltaTime;
+
+        transform.Translate(0, yVector, 0);
 
     }
     
