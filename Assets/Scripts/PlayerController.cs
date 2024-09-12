@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     private float yDirection;
 
     private Rigidbody2D rb;
-
+    //
+    private int purse;
     public bool overworld; 
 
     private void Start()
@@ -55,13 +56,34 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(0, yVector, 0);
 
+        
+
     }
-    
+
     //for organization, put other built-in Unity functions here
-    
-    
-    
-    
-    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        print("I triggered something");
+
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            // have Coins
+            purse = purse + 1;
+       
+            print("we have " + purse + " coins in our purse. ");
+            Destroy(other.gameObject);
+        }
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            print("we hit a wall");
+        }
+    }
+
+
     //after all Unity functions, your own functions can go here
 }
