@@ -61,20 +61,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //for organization, put other built-in Unity functions here
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        print("I triggered something");
-
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            // have Coins
-            purse = purse + 1;
-       
-            print("we have " + purse + " coins in our purse. ");
-            Destroy(other.gameObject);
-        }
-        
-    }
+   
 
     private void OnCollisionEnter2D(Collision2D other)
     {
