@@ -6,15 +6,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float xSpeed;
-    private float xVector;
-    private float xDirection;
+    private float _xVector;
+    private float _xDirection;
     public float ySpeed;
-    private float yVector;
-    private float yDirection;
+    private float _yVector;
+    private float _yDirection;
 
     private Rigidbody2D rb;
     //
     private int purse;
+    private int health;
     public bool overworld; 
 
     private void Start()
@@ -36,25 +37,25 @@ public class PlayerController : MonoBehaviour
 
 
         xSpeed = 5f;
-        xVector = 0f;
-        xDirection = 0;
+        _xVector = 0f;
+        _xDirection = 0;
 
         ySpeed = 5f;
-        yVector = 0f;
-        yDirection = 0f;
+        _yVector = 0f;
+        _yDirection = 0f;
     }
 
     private void Update()
     {
-        xDirection = Input.GetAxis("Horizontal");
-        xVector = xSpeed * xDirection * Time.deltaTime;
+        _xDirection = Input.GetAxis("Horizontal");
+        _xVector = xSpeed * _xDirection * Time.deltaTime;
 
-        transform.Translate(xVector, 0, 0);
+        transform.Translate(_xVector, 0, 0);
 
-        yDirection = Input.GetAxis("Vertical");
-        yVector = ySpeed * yDirection * Time.deltaTime;
+        _yDirection = Input.GetAxis("Vertical");
+        _yVector = ySpeed * _yDirection * Time.deltaTime;
 
-        transform.Translate(0, yVector, 0);
+        transform.Translate(0, _yVector, 0);
 
         
 

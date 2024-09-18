@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-   GameManger gm;
+   GameManger _gm;
     public bool overworld;
     private void Start()
     {
-        gm = FindObjectOfType<GameManger>();
+        _gm = FindObjectOfType<GameManger>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,9 +15,9 @@ public class Coins : MonoBehaviour
         if (other.gameObject.CompareTag("Coin"))
         {
             // have Coins
-            gm.purse = gm.purse + 1;
+            _gm.purse = _gm.purse + 1;
 
-            print("we have " + gm.purse + " coins in our purse. ");
+            print("we have " + _gm.purse + " coins in our purse. ");
             Destroy(other.gameObject);
         }
 

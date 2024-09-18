@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class GameManger : MonoBehaviour
 {
-    public static GameManger gm;
+    private static GameManger _gm;
     public int purse;
+    public int health;
 
     private void Awake()
     {
-        if(gm!=null && gm!=this)
+        if(_gm!=null && _gm!=this)
         {
             Destroy(gameObject);
         }
         else
         {
-            gm = this;
+            _gm = this;
             DontDestroyOnLoad(this.gameObject);
         }
     }
