@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   purse: 0
+  health: 0
 --- !u!4 &84358702
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &333696693
+--- !u!1001 &434562661
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -171,11 +172,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5774960653562304022, guid: bc139d8bb8dee439490b05712200dfee,
-        type: 3}
-      propertyPath: overworld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7819348094328437333, guid: bc139d8bb8dee439490b05712200dfee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3590,5 +3586,5 @@ SceneRoots:
   - {fileID: 2135421599}
   - {fileID: 2005957308}
   - {fileID: 1984272036}
-  - {fileID: 333696693}
   - {fileID: 84358702}
+  - {fileID: 434562661}

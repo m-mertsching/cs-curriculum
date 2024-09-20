@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManger : MonoBehaviour
@@ -18,5 +19,9 @@ public class GameManger : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
-        
+
+    private void Start()
+    {
+        health = 5;
+    }
 }
