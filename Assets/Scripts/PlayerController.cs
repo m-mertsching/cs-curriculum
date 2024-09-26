@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             GetComponent<Rigidbody2D>().gravityScale = 1;
+            ySpeed = 0;
         }
 
 

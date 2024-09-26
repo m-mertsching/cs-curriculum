@@ -1,14 +1,21 @@
+using UnityEditor.SceneManagement;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Spike : MonoBehaviour
 {
     GameManger _gm;
+    public SceneManager Current;
     
 
     private void Start()
     {
         _gm = FindFirstObjectByType<GameManger>();
         
+    }
+
+    void Die()
+    {
+        SceneManager.LoadScene("Start");
     }
     // Update is called once per frame
 
@@ -20,5 +27,14 @@ public class Spike : MonoBehaviour
             print("we have " + _gm.health + " health ");
         }
 
+    }
+
+    void Update()
+    {
+        if (_gm.health <= 1)
+        {
+            Die();
+            _gm.health = 5;
+        }
     }
 }   
