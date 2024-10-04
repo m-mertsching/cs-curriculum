@@ -1,19 +1,25 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     private float speed;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Vector3 targetposition;
+    
     void Start()
     {
         speed = 10;
-        public Vector3 Target;
-    }
-
-// Update is called once per frame
-    void Update()
-    {
         
     }
+
+
+
+    void Update()
+    {
+
+        transform.position = Vector3.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
+    }
+
+
+
 }
