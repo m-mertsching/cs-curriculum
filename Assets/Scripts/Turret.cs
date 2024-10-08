@@ -19,7 +19,7 @@ public class Turret : MonoBehaviour
         
         if (other.gameObject.CompareTag("Player") )
         {
-            print("we collided with a player");
+            //print("we collided with a player");
             target = other.gameObject;
             
 
@@ -31,7 +31,7 @@ public class Turret : MonoBehaviour
         if (other.gameObject.CompareTag("Player") )
         {
             target = null;
-           
+            
 
         }
     }

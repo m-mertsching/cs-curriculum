@@ -9,6 +9,7 @@ TagManager:
   - Axe
   - Spikes
   - Wall
+  - bullet
   layers:
   - Default
   - TransparentFX

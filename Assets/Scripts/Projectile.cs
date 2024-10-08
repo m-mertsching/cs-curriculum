@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour
 {
     private float speed;
     public Vector3 targetposition;
+    GameManger _gm;
     
     void Start()
     {
@@ -20,6 +21,5 @@ public class Projectile : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
     }
 
-
-
+  
 }
