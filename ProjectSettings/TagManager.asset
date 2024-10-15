@@ -10,6 +10,8 @@ TagManager:
   - Spikes
   - Wall
   - bullet
+  - waypoint
+  - attack
   layers:
   - Default
   - TransparentFX
