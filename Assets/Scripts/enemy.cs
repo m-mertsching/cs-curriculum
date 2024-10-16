@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         Collider2D collider = GetComponent<Collider2D>();
