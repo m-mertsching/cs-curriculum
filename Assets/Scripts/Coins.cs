@@ -25,7 +25,7 @@ public class Coins : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                print("we hit a wall");
+                //print("we hit a wall");
             }
         }
 

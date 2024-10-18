@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
             {
                 counter = 0;
             }
-            print(counter);
+            //print(counter);
             targetposition = waypoints[counter].transform.position;
         }
     }
