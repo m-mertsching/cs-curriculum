@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 
@@ -9,44 +10,54 @@ public class EnemyController : MonoBehaviour
     public Transform[] patrolPoints; // Points for the enemy to patrol
     public float speed = 2f; // Speed of the enemy
     public float detectionRange = 5f; // Distance at which the enemy detects the player
-    public Transform player; // Reference to the player's transform
-    
+    public GameObject player; // Reference to the player's transform
 
     private int currentPatrolIndex = 0;
     private bool isChasing = false;
-    
+    private float distanceToPlayer;
 
+    private void Start()
+    {
+        print(player);
+    }
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        print(isChasing);
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
 
         if (isChasing)
         {
             ChasePlayer();
-            if (distanceToPlayer > detectionRange)
-            {
-                isChasing = false;
-            }
+            
         }
         else
         {
             Patrol();
 
-
+    /*
             if (distanceToPlayer <= detectionRange)
             {
                 isChasing = true;
             }
+            */
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) ;
+        if (other.CompareTag("Player")) 
         {
             isChasing = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")) 
+        {
+            isChasing = false;
         }
     }
 
@@ -69,8 +80,15 @@ public class EnemyController : MonoBehaviour
     private void ChasePlayer()
     {
         //float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         print("we got here");
+        
+        /*
+        if (distanceToPlayer > detectionRange)
+        {
+            isChasing = false;
+        }
+        */
     }
 
 

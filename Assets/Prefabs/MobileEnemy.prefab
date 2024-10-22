@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 3598236532681319789}
   - component: {fileID: 2864171262592659787}
   - component: {fileID: 6876940659172361034}
+  - component: {fileID: 6000906839929289594}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: attack
@@ -275,3 +276,15 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2.5
+--- !u!114 &6000906839929289594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074370204116875197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd8a18f0229a499da6a032e83043ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

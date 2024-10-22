@@ -31,6 +31,11 @@ public class Spike : MonoBehaviour
             _gm.health -= 1;
             print("we have " + _gm.health + " health ");
         }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            _gm.health -= 1;
+            print("we have " + _gm.health + " health ");
+        }
 
     }
     
