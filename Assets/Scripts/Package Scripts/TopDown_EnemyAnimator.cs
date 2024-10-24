@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TopDown_EnemyAnimator : MonoBehaviour
 {
-    public bool IsAttacking { get; private set; }
+    public bool IsAttacking { get; set; }
 
     Vector3 prevPos;
     Animator anim;
@@ -45,10 +45,10 @@ public class TopDown_EnemyAnimator : MonoBehaviour
 
         prevPos = transform.position;
 
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             Attack();
-        }
+        }*/
 
         IsAttacking = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
     }

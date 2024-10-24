@@ -16,6 +16,8 @@ public class EnemyState : MonoBehaviour
     private int currentPatrolIndex = 0;
     private bool isChasing = false;
     private float distanceToPlayer;
+    public TopDown_EnemyAnimator animator;
+    
 
     enum States
     {
@@ -25,17 +27,18 @@ public class EnemyState : MonoBehaviour
     }
 
     private States state;
-
+    
     private void Start()
     {
         SwitchState(States.patrol);
+        animator = GetComponentInChildren<TopDown_EnemyAnimator>();
     }
 
     void Update()
     {
+        
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-
+        
         if (state == States.chase)
         {
             ChasePlayer();
@@ -48,7 +51,7 @@ public class EnemyState : MonoBehaviour
         
         if (state == States.attack)
         {
-            Attack();
+            AttackPlayer();
         }
         
         
@@ -105,9 +108,17 @@ public class EnemyState : MonoBehaviour
     }
 
 
-    private void Attack()
+    private void AttackPlayer()
     {
-       //print("attacked"); // Add attack logic here (e.g., deal damage)
+        if (animator.IsAttacking)
+        {
+            animator.Attack();
+            print("attacked");
+        }
+
+        animator.IsAttacking = true;
+        animator.Attack();
+        print("attacked");
     }
 
     void SwitchState(States _state)
