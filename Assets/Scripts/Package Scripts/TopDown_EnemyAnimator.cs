@@ -8,11 +8,13 @@ public class TopDown_EnemyAnimator : MonoBehaviour
 
     Vector3 prevPos;
     Animator anim;
+  
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame

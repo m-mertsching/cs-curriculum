@@ -11,6 +11,7 @@ public class GameManger : MonoBehaviour
     public int health;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI healthText;
+    
 
     private void Awake()
     {

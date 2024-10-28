@@ -18,6 +18,13 @@ public class EnemyState : MonoBehaviour
     private float distanceToPlayer;
     public TopDown_EnemyAnimator animator;
     
+    public Vector2 OGsize;
+    private BoxCollider2D collider;
+    GameManger _gm;
+    //private float cooldown = 2;
+    
+   
+    
 
     enum States
     {
@@ -32,6 +39,10 @@ public class EnemyState : MonoBehaviour
     {
         SwitchState(States.patrol);
         animator = GetComponentInChildren<TopDown_EnemyAnimator>();
+        
+        collider = GetComponent<BoxCollider2D>();
+        OGsize = collider.size;
+        _gm = FindFirstObjectByType<GameManger>();
     }
 
     void Update()
@@ -59,8 +70,9 @@ public class EnemyState : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
+            
             if(state == States.chase)
                 SwitchState(States.attack);
             else
@@ -102,7 +114,7 @@ public class EnemyState : MonoBehaviour
 
     private void ChasePlayer()
     {
-       
+        collider.size = OGsize;
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
       
     }
@@ -110,20 +122,20 @@ public class EnemyState : MonoBehaviour
 
     private void AttackPlayer()
     {
-        if (animator.IsAttacking)
-        {
-            animator.Attack();
-            print("attacked");
-        }
-
+        
         animator.IsAttacking = true;
         animator.Attack();
+        collider.size = new Vector2(2, 2);
         print("attacked");
+        _gm.health -= 1;
+        //cooldown -= Time.deltaTime;
+        
     }
 
     void SwitchState(States _state)
     {
         state = _state;
+        
     }
 
 }
