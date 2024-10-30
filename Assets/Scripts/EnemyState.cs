@@ -17,12 +17,15 @@ public class EnemyState : MonoBehaviour
     private bool isChasing = false;
     private float distanceToPlayer;
     public TopDown_EnemyAnimator animator;
+    public TopDown_AnimatorController playeranimator;
+    public float interactionDistance = 3f;
     
     public Vector2 OGsize;
     private BoxCollider2D collider;
     GameManger _gm;
-    //private float cooldown = 2;
-    
+    private float cooldown = 1;
+    public float health;
+    private GameObject AxeItem;
    
     
 
@@ -30,25 +33,32 @@ public class EnemyState : MonoBehaviour
     {
         patrol,
         chase,
-        attack
+        attack,
+        die
     }
 
     private States state;
-    
+
     private void Start()
     {
         SwitchState(States.patrol);
         animator = GetComponentInChildren<TopDown_EnemyAnimator>();
-        
+
         collider = GetComponent<BoxCollider2D>();
         OGsize = collider.size;
         _gm = FindFirstObjectByType<GameManger>();
+        health = 1;
     }
 
     void Update()
     {
         
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        if (Input.GetMouseButton(0) && distanceToPlayer <= interactionDistance)
+        {
+            health -= 1;
+        }
         
         if (state == States.chase)
         {
@@ -64,11 +74,19 @@ public class EnemyState : MonoBehaviour
         {
             AttackPlayer();
         }
-        
+        if (state == States.die)
+        {
+            Die();
+        }
+
+        if (health < 1)
+        {
+            Die();
+        }
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -82,7 +100,7 @@ public class EnemyState : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player")) 
         {
@@ -97,7 +115,7 @@ public class EnemyState : MonoBehaviour
         }
     }
 
-    private void Patrol()
+    void Patrol()
     {
         if (patrolPoints.Length == 0) return;
         
@@ -112,7 +130,7 @@ public class EnemyState : MonoBehaviour
     }
 
 
-    private void ChasePlayer()
+    void ChasePlayer()
     {
         collider.size = OGsize;
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
@@ -120,15 +138,25 @@ public class EnemyState : MonoBehaviour
     }
 
 
-    private void AttackPlayer()
+    void AttackPlayer()
     {
-        
-        animator.IsAttacking = true;
+        cooldown -= Time.deltaTime;
+        //print("trying to attack");
+        if (cooldown < 0)
+        {
+            animator.IsAttacking = true;
+            animator.Attack();
+            collider.size = new Vector2(3, 3);
+            //print("attacked");
+            _gm.health -= 1;
+            cooldown = 1;
+        }
+        /*animator.IsAttacking = true;
         animator.Attack();
         collider.size = new Vector2(2, 2);
         print("attacked");
         _gm.health -= 1;
-        //cooldown -= Time.deltaTime;
+        cooldown -= Time.deltaTime;*/
         
     }
 
@@ -138,4 +166,13 @@ public class EnemyState : MonoBehaviour
         
     }
 
+    void Die()
+    {
+       print("i hit enemy");
+       Destroy(gameObject);
+       DropAxeItem();
+       
+        
+        
+    }
 }
