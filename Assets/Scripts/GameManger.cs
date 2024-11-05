@@ -11,7 +11,7 @@ public class GameManger : MonoBehaviour
     public int health;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI healthText;
-    
+    public bool HasAxe;
 
     private void Awake()
     {
@@ -31,6 +31,7 @@ public class GameManger : MonoBehaviour
         health = 5;
         coinText.text = "Coins :" + _gm.purse;
         healthText.text = "Health :" + _gm.health;
+        HasAxe = false;
     }
 
     public void Update()

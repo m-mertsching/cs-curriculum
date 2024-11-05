@@ -25,7 +25,7 @@ public class EnemyState : MonoBehaviour
     GameManger _gm;
     private float cooldown = 1;
     public float health;
-    private GameObject AxeItem;
+    public GameObject AxeItem;
    
     
 
@@ -151,12 +151,7 @@ public class EnemyState : MonoBehaviour
             _gm.health -= 1;
             cooldown = 1;
         }
-        /*animator.IsAttacking = true;
-        animator.Attack();
-        collider.size = new Vector2(2, 2);
-        print("attacked");
-        _gm.health -= 1;
-        cooldown -= Time.deltaTime;*/
+       
         
     }
 
@@ -170,9 +165,7 @@ public class EnemyState : MonoBehaviour
     {
        print("i hit enemy");
        Destroy(gameObject);
-       DropAxeItem();
-       
-        
+       Instantiate(AxeItem, transform.position, Quaternion.identity);
         
     }
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     //
     private int purse;
     private int health;
+    
     public bool overworld; 
 
     private void Start()

@@ -12,6 +12,7 @@ TagManager:
   - bullet
   - waypoint
   - attack
+  - cavewall
   layers:
   - Default
   - TransparentFX

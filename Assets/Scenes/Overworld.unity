@@ -358,7 +358,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1861919207}
-  - {fileID: 1665360716}
   - {fileID: 1270322012}
   m_Father: {fileID: 401039399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40454,8 +40453,10 @@ MonoBehaviour:
   player: {fileID: 1804581588}
   animator: {fileID: 0}
   playeranimator: {fileID: 0}
+  interactionDistance: 3
   OGsize: {x: 0, y: 0}
   health: 0
+  AxeItem: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac, type: 3}
 --- !u!4 &1016716630 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281311786053241907, guid: 69c7343f050914c7787bbbe42c07b5b8,
@@ -84563,7 +84564,7 @@ GameObject:
   - component: {fileID: 1665360717}
   m_Layer: 0
   m_Name: No Collision Door Removed
-  m_TagString: Untagged
+  m_TagString: cavewall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84581,7 +84582,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 287773805}
+  m_Father: {fileID: 1861919207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1665360717
 TilemapRenderer:
@@ -84894,7 +84895,7 @@ GameObject:
   - component: {fileID: 1861919208}
   m_Layer: 0
   m_Name: Collision Door Removed
-  m_TagString: Untagged
+  m_TagString: cavewall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84911,7 +84912,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1665360716}
   m_Father: {fileID: 287773805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &1861919208
