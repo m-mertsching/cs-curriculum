@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8817025345248629567}
   - component: {fileID: 1283610988072705179}
   - component: {fileID: 7869803674047299266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 7331405461558828554}
   - component: {fileID: 4574321375523413201}
   - component: {fileID: 9152161831939472047}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f077d151df914320b20568f79f03ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!114 &4574321375523413201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2516d583792427f8f1f5ee0e036030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!114 &9152161831939472047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,4 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSpeed: 0
   ySpeed: 0
+  length: 0
   overworld: 1
+  jumpForce: 0.0001
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
