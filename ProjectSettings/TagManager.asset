@@ -13,6 +13,7 @@ TagManager:
   - waypoint
   - attack
   - cavewall
+  - moster1
   layers:
   - Default
   - TransparentFX
