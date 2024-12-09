@@ -10,12 +10,13 @@ public class moster1 : MonoBehaviour
     private int currentPatrolIndex = 0;
     private bool isChasing = false;
     private float distanceToPlayer;
-    
+   
     private BoxCollider2D collider;
     GameManger _gm;
     public float health;
     private float cooldown = 1;
     public float interactionDistance = 2f;
+    private Transform targetPoint;
 
     enum States
     {
@@ -23,18 +24,17 @@ public class moster1 : MonoBehaviour
         attack,
         die
     }
-    
+   
     private States state;
 
     private void Start()
-    { 
+    {
         SwitchState(States.patrol);
         if (patrolPoints.Length > 0)
         {
-            // Start patrolling if patrol points are set
             currentPatrolIndex = 0;
+            targetPoint = patrolPoints[currentPatrolIndex];
         }
-        
     }
 
     // Update is called once per frame
@@ -96,32 +96,39 @@ public class moster1 : MonoBehaviour
     void Patrol()
     {
         if (patrolPoints.Length == 0) return;
-        currentPatrolIndex = 1;
-        Transform targetPoint = patrolPoints[currentPatrolIndex];
-        print("heading towared" + currentPatrolIndex);
-        
-        transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
-        
-        if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f)
+
+        // Move towards the current target point
+        transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
+       
+        // Check if we've reached the current target point
+        if (Vector2.Distance(transform.position, targetPoint.position) < 0.1f)
         {
-            print("switch direction");
-            //Debug.Log($"Current Patrol Index: {currentPatrolIndex}, Moving Forward: {movingForward}");
-            
+            // Switch direction
             if (movingForward)
             {
-               
-                    movingForward = false;
-                    currentPatrolIndex = 1;
+                if (currentPatrolIndex < patrolPoints.Length - 1)
+                {
+                    currentPatrolIndex++;
+                    if (currentPatrolIndex == patrolPoints.Length - 1)
+                    {
+                        movingForward = false;
+                    }
+                }
             }
-            
             else
             {
-               
-                    currentPatrolIndex = 0;
-                    movingForward = true;
+                if (currentPatrolIndex > 0)
+                {
+                    currentPatrolIndex--;
+                    if (currentPatrolIndex == 0)
+                    {
+                        movingForward = true;
+                    }
+                }
             }
-            
-            //currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+           
+            // Update target point
+            targetPoint = patrolPoints[currentPatrolIndex];
         }
     }
     
