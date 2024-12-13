@@ -29,6 +29,7 @@ public class moster1 : MonoBehaviour
 
     private void Start()
     {
+        health = 1;
         SwitchState(States.patrol);
         if (patrolPoints.Length > 0)
         {
@@ -101,17 +102,21 @@ public class moster1 : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
        
         // Check if we've reached the current target point
-        if (Vector2.Distance(transform.position, targetPoint.position) < 0.1f)
+        if (Vector2.Distance(transform.position, targetPoint.position) < 1f)
         {
+            //print("is moving");
             // Switch direction
             if (movingForward)
             {
+                
                 if (currentPatrolIndex < patrolPoints.Length - 1)
                 {
                     currentPatrolIndex++;
                     if (currentPatrolIndex == patrolPoints.Length - 1)
                     {
+                        //print("collided with point");
                         movingForward = false;
+                       
                     }
                 }
             }
